@@ -8,38 +8,31 @@ public class Player {
   private List<Card> m_hand;
   protected final int g_maxScore = 21;
 
-  public Player()
-  {
+  public Player() {
   
     m_hand = new LinkedList<Card>();
     System.out.println("Hello List World");
   }
   
-  public void DealCard(Card a_addToHand)
-  {
+  public void DealCard(Card a_addToHand) {
     m_hand.add(a_addToHand);
   }
   
-  public Iterable<Card> GetHand()
-  {
+  public Iterable<Card> GetHand() {
     return m_hand;
   }
   
-  public void ClearHand()
-  {
+  public void ClearHand() {
     m_hand.clear();
   }
   
-  public void ShowHand()
-  {
-    for(Card c : m_hand)
-    {
+  public void ShowHand() {
+    for(Card c : m_hand) {
       c.Show(true);
     }
   }
   
-  public int CalcScore()
-  {
+  public int CalcScore() {
     // the number of scores is dependant on the number of scorable values
     // as it seems there is no way to do this check at compile time in java ?!
     // cardScores[13] = {...};
@@ -52,18 +45,14 @@ public class Player {
     int score = 0;
 
     for(Card c : GetHand()) {
-        if (c.GetValue() != Card.Value.Hidden)
-        {
+        if (c.GetValue() != Card.Value.Hidden) {
             score += cardScores[c.GetValue().ordinal()];
         }
     }
 
-    if (score > g_maxScore)
-    {
-        for(Card c : GetHand())
-        {
-            if (c.GetValue() == Card.Value.Ace && score > g_maxScore)
-            {
+    if (score > g_maxScore) {
+        for(Card c : GetHand()) {
+            if (c.GetValue() == Card.Value.Ace && score > g_maxScore) {
                 score -= 10;
             }
         }

@@ -42,6 +42,13 @@ public class Dealer extends Player {
     return false;
   }
 
+  public boolean Stand(Player a_player) {
+    if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver()) {
+      return true;
+    }
+    return false;
+  }
+
   public boolean IsDealerWinner(Player a_player) {
     if (a_player.CalcScore() > g_maxScore) {
       return true;
