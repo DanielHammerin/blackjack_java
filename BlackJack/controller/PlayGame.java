@@ -17,7 +17,8 @@ public class PlayGame {
     }
 
     int input = a_view.GetInput();
-    
+
+
     if (input == 'p')
     {
         a_game.NewGame();
@@ -25,10 +26,12 @@ public class PlayGame {
     else if (input == 'h')
     {
         a_game.Hit();
+      a_game.whoWon();
     }
     else if (input == 's')
     {
         a_game.Stand();
+      a_game.whoWonStand();
     }
 
     return input != 'q';
