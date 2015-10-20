@@ -7,10 +7,11 @@ public class Dealer extends Player {
   private Deck m_deck;
   private INewGameStrategy m_newGameRule;
   private IHitStrategy m_hitRule;
+  private boolean american;
 
   public Dealer(RulesFactory a_rulesFactory) {
   
-    m_newGameRule = a_rulesFactory.GetNewGameRule();
+    m_newGameRule = a_rulesFactory.GetNewGameRule(american);
     m_hitRule = a_rulesFactory.GetHitRule();
     
     /*for(Card c : m_deck.GetCards()) {
@@ -32,9 +33,7 @@ public class Dealer extends Player {
 
   public boolean Hit(Player a_player) {
     if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver()) {
-      Card c;
-      c = m_deck.GetCard();
-      c.Show(true);
+      Card c = showCard(m_deck.GetCard());
       a_player.DealCard(c);
       
       return true;
@@ -43,8 +42,14 @@ public class Dealer extends Player {
   }
 
   public boolean Stand(Player a_player) {
-    if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver()) {
-      return true;
+    if (m_deck != null) {
+      ShowHand();
+      while (m_hitRule.DoHit(this)) {
+        m_hitRule.DoHit(this);
+        Card c = showCard(m_deck.GetCard());
+        DealCard(c);
+        return true;
+      }
     }
     return false;
   }
@@ -63,6 +68,11 @@ public class Dealer extends Player {
         return true;
     }
     return false;
+  }
+
+  public Card showCard(Card c) {
+    c.Show(true);
+    return c;
   }
   
 }

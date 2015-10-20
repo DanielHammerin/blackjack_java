@@ -1,7 +1,9 @@
 package BlackJack.model;
 
+
 import java.util.List;
 import java.util.LinkedList;
+
 
 public class Deck {
 
@@ -47,5 +49,4 @@ public class Deck {
           AddCard(c);
       }
   }
-  
 }

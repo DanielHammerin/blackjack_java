@@ -40,7 +40,7 @@ public class Player {
     };
     assert (cardScores.length == Card.Value.Count.ordinal()) : "Card Scores array size does not match number of card values";
   
-    
+
     int score = 0;
 
     for(Card c : GetHand()) {

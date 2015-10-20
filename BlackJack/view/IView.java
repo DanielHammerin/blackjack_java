@@ -1,7 +1,6 @@
 package BlackJack.view;
 
-public interface IView
-{
+public interface IView {
   void DisplayWelcomeMessage();
   int GetInput();
   void DisplayCard(BlackJack.model.Card a_card);

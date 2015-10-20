@@ -51,7 +51,7 @@ public class Game {
 
    else if(m_player.CalcScore() > m_dealer.CalcScore() && m_player.CalcScore() < 22)
     {
-      System.out.println(dealerWon);
+      System.out.println(playerWon);
     }
   }
   public boolean NewGame() {
