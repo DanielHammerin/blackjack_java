@@ -21,14 +21,19 @@ public class PlayGame {
     if (input == 'p')
     {
         a_game.NewGame();
+
     }
     else if (input == 'h')
     {
+        a_game.whoWon();
         a_game.Hit();
+
     }
     else if (input == 's')
     {
+        a_game.whoWonStand();
         a_game.Stand();
+
     }
 
     return input != 'q';
