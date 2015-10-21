@@ -5,7 +5,9 @@ import BlackJack.model.Game;
 
 public class PlayGame {
 
-  public boolean Play(Game a_game, IView a_view) {
+    //delay 
+
+  public boolean Play(Game a_game, IView a_view) throws InterruptedException{
     a_view.DisplayWelcomeMessage();
     
     a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
@@ -27,13 +29,13 @@ public class PlayGame {
     {
         a_game.whoWon();
         a_game.Hit();
+        Thread.sleep(4000);
 
     }
     else if (input == 's')
     {
         a_game.whoWonStand();
         a_game.Stand();
-
     }
 
     return input != 'q';
