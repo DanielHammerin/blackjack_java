@@ -7,13 +7,13 @@ import BlackJack.controller.*;
 public class Program
 {
 
-  public static void main(String[] a_args)
+  public static void main(String[] a_args) throws InterruptedException
   {
   
     Game g = new Game();
     IView v = new SimpleView(); //new SwedishView();
     PlayGame ctrl = new PlayGame();
-    
+
     while (ctrl.Play(g, v));
   }
 }
