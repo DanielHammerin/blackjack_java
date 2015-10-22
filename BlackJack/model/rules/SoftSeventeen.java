@@ -13,7 +13,7 @@ public class SoftSeventeen implements IHitStrategy {
 
         if (score > 21) {
             int nAces = a_dealer.aceOnHand();
-            for (int i = 0; i < nAces; i++) {
+            for (int i = 1; i < nAces; i++) {
                 if (score - (i*10) < g_hitLimit) {
                     return true;
                 }

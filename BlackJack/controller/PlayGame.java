@@ -1,13 +1,16 @@
 package BlackJack.controller;
 
+import BlackJack.model.IObserver;
 import BlackJack.view.IView;
 import BlackJack.model.Game;
 
-public class PlayGame {
+public class PlayGame implements IObserver{
 
-    //delay 
+    //delay
 
   public boolean Play(Game a_game, IView a_view) throws InterruptedException{
+
+
     a_view.DisplayWelcomeMessage();
     
     a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
@@ -23,6 +26,7 @@ public class PlayGame {
     if (input == 'p')
     {
         a_game.NewGame();
+
 
     }
     else if (input == 'h')
@@ -40,4 +44,8 @@ public class PlayGame {
 
     return input != 'q';
   }
+
+    public void update()
+    {
+    }
 }
