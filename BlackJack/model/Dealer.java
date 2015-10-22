@@ -74,5 +74,9 @@ public class Dealer extends Player {
     c.Show(true);
     return c;
   }
+
+  public void setAmerican(boolean b) {
+    american = b;
+  }
   
 }

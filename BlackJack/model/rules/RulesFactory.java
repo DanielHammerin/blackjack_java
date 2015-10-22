@@ -2,8 +2,13 @@ package BlackJack.model.rules;
 
 public class RulesFactory {
 
-  public IHitStrategy GetHitRule() {
+  public IHitStrategy GetHitRule(boolean american) {
+    if (american) {
       return new BasicHitStrategy();
+    }
+    else {
+      return new SoftSeventeen();
+    }
   }
 
   public INewGameStrategy GetNewGameRule(boolean american) {

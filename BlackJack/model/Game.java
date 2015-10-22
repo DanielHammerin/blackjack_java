@@ -27,8 +27,7 @@ public class Game {
     if(m_player.CalcScore() == 21){
       System.out.println(playerWon);
     }
-    if(m_player.CalcScore() > 21)
-    {
+    if(m_player.CalcScore() > 21) {
       System.out.println(dealerWon);
     }
    if(m_dealer.CalcScore() == 21){
@@ -44,13 +43,11 @@ public class Game {
     String playerWon = "The player has won";
     String dealerWon = "The dealer has won";
 
-    if(m_dealer.CalcScore() > m_player.CalcScore() && m_dealer.CalcScore() < 22)
-    {
+    if(m_dealer.CalcScore() > m_player.CalcScore() && m_dealer.CalcScore() < 22) {
       System.out.println(dealerWon);
     }
 
-   else if(m_player.CalcScore() > m_dealer.CalcScore() && m_player.CalcScore() < 22)
-    {
+   else if(m_player.CalcScore() > m_dealer.CalcScore() && m_player.CalcScore() < 22) {
       System.out.println(playerWon);
     }
   }
@@ -81,6 +78,8 @@ public class Game {
   public int GetPlayerScore() {
     return m_player.CalcScore();
   }
-    
+  public void sendAmerican(boolean b) {
+      m_dealer.setAmerican(b);
+  }
   
 }
