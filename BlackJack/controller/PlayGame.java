@@ -4,6 +4,8 @@ import BlackJack.model.IObserver;
 import BlackJack.view.IView;
 import BlackJack.model.Game;
 
+import java.util.Scanner;
+
 public class PlayGame implements IObserver{
 
     //delay
@@ -25,8 +27,10 @@ public class PlayGame implements IObserver{
     
     if (input == 'p')
     {
-        a_game.NewGame();
+        boolean murca = false;
+        american(murca);
 
+        a_game.NewGame();
 
     }
     else if (input == 'h')
@@ -47,5 +51,22 @@ public class PlayGame implements IObserver{
 
     public void update()
     {
+    }
+    public boolean american(boolean murca) {
+      Scanner sc = new Scanner(System.in);
+      System.out.println("American version = 'a' International version = 'i'");
+      String in = sc.nextLine();
+      if (in == "a") {
+        murca = true;
+        return murca;
+      }
+      else if (in == "i") {
+        murca = false;
+        return murca;
+      }
+      else {
+        System.out.println("Not a valid input. Please re-enter");
+        return american(murca);
+      }
     }
 }
