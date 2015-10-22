@@ -8,15 +8,19 @@ import java.util.Scanner;
 
 public class PlayGame implements IObserver{
 
-    //delay
+    Game game;
+    IView view;
+    public PlayGame(Game a_game, IView a_view){
+
+        game = a_game;
+        view = a_view;
+
+    }
 
   public boolean Play(Game a_game, IView a_view) throws InterruptedException{
 
 
-    a_view.DisplayWelcomeMessage();
-    
-    a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
-    a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
+      a_view.DisplayWelcomeMessage();
 
     if (a_game.IsGameOver())
     {
@@ -51,6 +55,10 @@ public class PlayGame implements IObserver{
 
     public void update()
     {
+
+        view.DisplayDealerHand(game.GetDealerHand(), game.GetDealerScore());
+        view.DisplayPlayerHand(game.GetPlayerHand(), game.GetPlayerScore());
+
     }
     public boolean american(boolean murca) {
       Scanner sc = new Scanner(System.in);
