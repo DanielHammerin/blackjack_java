@@ -42,11 +42,11 @@ public class Dealer extends Player {
     return false;
   }
 
-  public boolean Stand(Player a_player) {
+  public boolean Stand() {
     if (m_deck != null) {
       ShowHand();
       while (m_hitRule.DoHit(this)) {
-        Card c = a_player.showCard(m_deck.GetCard());
+        Card c = showCard(m_deck.GetCard());
         DealCard(c);
         return true;
       }

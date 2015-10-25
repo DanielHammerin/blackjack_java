@@ -1,5 +1,7 @@
 package BlackJack.model;
 
+import java.util.Observer;
+
 public class Game {
 
   private Dealer m_dealer;
@@ -28,7 +30,7 @@ public class Game {
   }
 
   public boolean Stand() {
-    return m_dealer.Stand(m_player);
+    return m_dealer.Stand();
   }
   
   public Iterable<Card> GetDealerHand() {
@@ -46,5 +48,9 @@ public class Game {
   public int GetPlayerScore() {
     return m_player.CalcScore();
   }
+    public void register(IObserver a_observer) {
+        m_player.register(a_observer);
+        m_dealer.register(a_observer);
+    }
   
 }

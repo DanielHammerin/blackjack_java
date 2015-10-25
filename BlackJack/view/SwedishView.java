@@ -58,6 +58,14 @@ public class SwedishView implements IView
             }
         }
 
+        public void pauseProgram() {
+            try {
+                Thread.sleep(4000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         private void DisplayHand(String a_name, Iterable<BlackJack.model.Card> a_hand, int a_score)
         {
             System.out.println(a_name + " Har: " + a_score);

@@ -9,16 +9,19 @@ public class PlayGame implements IObserver{
     Game game;
     IView view;
     public PlayGame(Game a_game, IView a_view){
-
         game = a_game;
         view = a_view;
+        a_game.register(this);
 
     }
 
-  public boolean Play(Game a_game, IView a_view) throws InterruptedException{
+  public boolean Play(Game a_game, IView a_view) {
 
 
       a_view.DisplayWelcomeMessage();
+
+    view.DisplayDealerHand(game.GetDealerHand(), game.GetDealerScore());
+    view.DisplayPlayerHand(game.GetPlayerHand(), game.GetPlayerScore());
 
     if (a_game.IsGameOver())
     {
@@ -36,12 +39,12 @@ public class PlayGame implements IObserver{
     else if (input == 'h')
     {
         a_game.Hit();
-        Thread.sleep(4000);
-
+      view.pauseProgram();
     }
     else if (input == 's')
     {
         a_game.Stand();
+      view.pauseProgram();
     }
 
     return input != 'q';
@@ -49,10 +52,8 @@ public class PlayGame implements IObserver{
 
     public void update()
     {
-
         view.DisplayDealerHand(game.GetDealerHand(), game.GetDealerScore());
         view.DisplayPlayerHand(game.GetPlayerHand(), game.GetPlayerScore());
-
     }
 
 }
