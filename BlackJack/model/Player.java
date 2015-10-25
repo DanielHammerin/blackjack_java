@@ -30,15 +30,10 @@ public class Player {
       c.Show(true);
     }
   }
-  public int aceOnHand() {
-      int nAce = 0;
-      for (Card c : GetHand()) {
-          if (c.GetValue() == Card.Value.Ace) {
-              nAce++;
-          }
-      }
-      return nAce;
-  }
+    public Card showCard(Card c) {
+        c.Show(true);
+        return c;
+    }
   
   public int CalcScore() {
     // the number of scores is dependant on the number of scorable values

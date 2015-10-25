@@ -50,4 +50,4 @@ public class SimpleView implements IView {
             }
             
         }
-    }
+}

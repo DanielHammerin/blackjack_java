@@ -7,12 +7,13 @@ public class Dealer extends Player {
   private Deck m_deck;
   private INewGameStrategy m_newGameRule;
   private IHitStrategy m_hitRule;
-  private boolean american;
+  private IPlayerWinsOnEqualHand m_WinnerRule;
 
   public Dealer(RulesFactory a_rulesFactory) {
   
-    m_newGameRule = a_rulesFactory.GetNewGameRule(american);
+    m_newGameRule = a_rulesFactory.GetNewGameRule();
     m_hitRule = a_rulesFactory.GetHitRule();
+    m_WinnerRule = a_rulesFactory.GetWinnerRule();
     
     /*for(Card c : m_deck.GetCards()) {
       c.Show(true);
@@ -45,8 +46,7 @@ public class Dealer extends Player {
     if (m_deck != null) {
       ShowHand();
       while (m_hitRule.DoHit(this)) {
-        m_hitRule.DoHit(this);
-        Card c = showCard(m_deck.GetCard());
+        Card c = a_player.showCard(m_deck.GetCard());
         DealCard(c);
         return true;
       }
@@ -55,12 +55,7 @@ public class Dealer extends Player {
   }
 
   public boolean IsDealerWinner(Player a_player) {
-    if (a_player.CalcScore() > g_maxScore) {
-      return true;
-    } else if (CalcScore() > g_maxScore) {
-      return false;
-    }
-    return CalcScore() >= a_player.CalcScore();
+    return m_WinnerRule.isDealerWinner(a_player, this);
   }
 
   public boolean IsGameOver() {
@@ -68,15 +63,6 @@ public class Dealer extends Player {
         return true;
     }
     return false;
-  }
-
-  public Card showCard(Card c) {
-    c.Show(true);
-    return c;
-  }
-
-  public void setAmerican(boolean b) {
-    american = b;
   }
   
 }

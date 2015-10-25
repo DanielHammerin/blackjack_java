@@ -2,21 +2,17 @@ package BlackJack.model.rules;
 
 public class RulesFactory {
 
-  public IHitStrategy GetHitRule(boolean american) {
-    if (american) {
-      return new BasicHitStrategy();
-    }
-    else {
+  public IHitStrategy GetHitRule() {
+      //return new BasicHitStrategy();
       return new SoftSeventeen();
-    }
   }
 
-  public INewGameStrategy GetNewGameRule(boolean american) {
-    if (american) {
+  public INewGameStrategy GetNewGameRule() {
       return new AmericanNewGameStrategy();
-    }
-    else {
-      return new InternationalNewGameStrategy();
-    }
+      //return new InternationalNewGameStrategy();
+  }
+
+  public IPlayerWinsOnEqualHand GetWinnerRule() {
+      return new PlayerWinsOnEqualHand();
   }
 }

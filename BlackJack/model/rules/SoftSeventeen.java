@@ -1,5 +1,6 @@
 package BlackJack.model.rules;
 
+import BlackJack.model.Card;
 import BlackJack.model.Player;
 
 /**
@@ -7,21 +8,14 @@ import BlackJack.model.Player;
  */
 public class SoftSeventeen implements IHitStrategy {
     private final int g_hitLimit = 17;
+    private boolean isAce = false;
 
     public boolean DoHit(Player a_dealer) {
-        int score = a_dealer.CalcScore();
-
-        if (score > 21) {
-            int nAces = a_dealer.aceOnHand();
-            for (int i = 1; i < nAces; i++) {
-                if (score - (i*10) < g_hitLimit) {
-                    return true;
-                }
+        for (Card c : a_dealer.GetHand()) {
+            if (c.GetValue() == Card.Value.Ace) {
+                isAce = true;
             }
         }
-        else if (score < g_hitLimit) {
-            return true;
-        }
-        return false;
+        return a_dealer.CalcScore() == 17 && isAce || a_dealer.CalcScore() < g_hitLimit;
     }
 }
