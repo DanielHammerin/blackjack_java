@@ -1,5 +1,4 @@
 package BlackJack.model;
-
 import java.util.Observer;
 
 /**
@@ -8,5 +7,5 @@ import java.util.Observer;
 public interface ISubject {
     void register(Observer o);
     void unregister(Observer o);
-    void notifyObserver();
+    void update();
 }
