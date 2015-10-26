@@ -29,25 +29,23 @@ public class PlayGame implements IObserver{
 
     }
 
-    int input = a_view.GetInput();
-    
-    if (input == 'p')
-    {
-        a_game.NewGame();
+    IView.InputChoice choice = a_view.GetInput();
 
-    }
-    else if (input == 'h')
-    {
-        a_game.Hit();
-      view.pauseProgram();
-    }
-    else if (input == 's')
-    {
-        a_game.Stand();
-      view.pauseProgram();
-    }
+      switch (choice) {
+          case P:
+            a_game.NewGame();
+            break;
 
-    return input != 'q';
+          case H:
+              a_game.Hit();
+              view.pauseProgram();
+              break;
+          case S:
+              a_game.Stand();
+              view.pauseProgram();
+              break;
+    }
+      return choice != IView.InputChoice.Q;
   }
 
     public void update()

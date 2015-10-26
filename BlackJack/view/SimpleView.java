@@ -1,5 +1,7 @@
 package BlackJack.view;
 
+import java.util.Scanner;
+
 public class SimpleView implements IView {
 
 
@@ -10,12 +12,22 @@ public class SimpleView implements IView {
           System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
         }
 
-        public int GetInput() {
-          try {
-            return System.in.read();
-          } catch (java.io.IOException e) {
-            System.out.println("" + e);
-            return 0;
+        public InputChoice GetInput() {
+            Scanner sc = new Scanner(System.in);
+          while (true) {
+              try {
+                  String in = sc.nextLine();
+
+                  switch (in) {
+                      case "p": return InputChoice.P;
+                      case "h": return InputChoice.H;
+                      case "s": return InputChoice.S;
+                      case "q": return InputChoice.Q;
+                  }
+              }
+              catch (IllegalArgumentException e) {
+                  System.out.println("Not a valid input, please try again.");
+              }
           }
         }
 
@@ -57,4 +69,6 @@ public class SimpleView implements IView {
             e.printStackTrace();
         }
     }
+
+
 }
