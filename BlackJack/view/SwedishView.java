@@ -28,7 +28,7 @@ public class SwedishView implements IView
                     }
                 }
                 catch (IllegalArgumentException e) {
-                    System.out.println("Not a valid input, please try again.");
+                    System.out.println("Ogiltigt kommando, försök igen.");
                 }
             }
         }
@@ -75,6 +75,10 @@ public class SwedishView implements IView
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+
+        public void DisplayClearConsole() {
+            System.out.flush();
         }
 
         private void DisplayHand(String a_name, Iterable<BlackJack.model.Card> a_hand, int a_score)

@@ -15,38 +15,38 @@ public class PlayGame implements IObserver{
 
     }
 
-  public boolean Play(Game a_game, IView a_view) {
+    public boolean Play(Game a_game, IView a_view) {
 
+        a_view.DisplayClearConsole();
+        a_view.DisplayWelcomeMessage();
 
-      a_view.DisplayWelcomeMessage();
+        view.DisplayDealerHand(game.GetDealerHand(), game.GetDealerScore());
+        view.DisplayPlayerHand(game.GetPlayerHand(), game.GetPlayerScore());
 
-    view.DisplayDealerHand(game.GetDealerHand(), game.GetDealerScore());
-    view.DisplayPlayerHand(game.GetPlayerHand(), game.GetPlayerScore());
+        if (a_game.IsGameOver())
+        {
+            a_view.DisplayGameOver(a_game.IsDealerWinner());
 
-    if (a_game.IsGameOver())
-    {
-        a_view.DisplayGameOver(a_game.IsDealerWinner());
+        }
 
+        IView.InputChoice choice = a_view.GetInput();
+
+        switch (choice) {
+            case P:
+                a_game.NewGame();
+                break;
+
+            case H:
+                a_game.Hit();
+                view.pauseProgram();
+                break;
+            case S:
+                a_game.Stand();
+                view.pauseProgram();
+                break;
+        }
+        return choice != IView.InputChoice.Q;
     }
-
-    IView.InputChoice choice = a_view.GetInput();
-
-      switch (choice) {
-          case P:
-            a_game.NewGame();
-            break;
-
-          case H:
-              a_game.Hit();
-              view.pauseProgram();
-              break;
-          case S:
-              a_game.Stand();
-              view.pauseProgram();
-              break;
-    }
-      return choice != IView.InputChoice.Q;
-  }
 
     public void update()
     {

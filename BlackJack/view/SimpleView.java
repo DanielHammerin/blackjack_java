@@ -69,6 +69,9 @@ public class SimpleView implements IView {
             e.printStackTrace();
         }
     }
+    public void DisplayClearConsole(){
+        System.out.flush();
+    }
 
 
 }

@@ -16,6 +16,6 @@ public class SoftSeventeen implements IHitStrategy {
                 isAce = true;
             }
         }
-        return a_dealer.CalcScore() == 17 && isAce || a_dealer.CalcScore() < g_hitLimit;
+        return a_dealer.CalcScore() == 17 && isAce || a_dealer.CalcScore() <= g_hitLimit;
     }
 }
