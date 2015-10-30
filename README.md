@@ -1,3 +1,4 @@
 # blackjack_java
 
-Fork this code to work with java in workshop 3. This repo only contains java files.
+LINK TO DOWNLOAD THE UPDATED CLASS DIAGRAM:
+http://s000.tinyupload.com/index.php?file_id=26062882754062876618 
