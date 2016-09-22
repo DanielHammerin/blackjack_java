@@ -1,4 +1,9 @@
-# blackjack_java
+# MVC Structured Application (DUO). 
+
+The purpes of this project was to furthur experiment and learn MVC(Model View Controller) and making an applicaiton as professionaly as possible ( by having it peer reviwed and creating diagrams for it).
+This project was done by both me and my friend Daniel Hammerin.
+
+-----------------------------------------------------------------------------------------------------------------------
 
 LINK TO DOWNLOAD THE UPDATED CLASS DIAGRAM:
 http://s000.tinyupload.com/index.php?file_id=26062882754062876618 
